@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+
+<!-- <body th:style="'background: url(/assets/img/img.png) no-repeat center center fixed;'"> -->
+
+
+<!--<style th:inline="text">-->
+<!--    body{-->
+<!--        background: url([[@{/assets/img/img.png}]])-->
+<!--        no-repeat center center fixed;-->
+<!--    }-->
+<!--</style>-->
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="https://www.szkolarysunku.waw.pl/wp-content/uploads/2020/03/szkola-rysunku-warszawa-nauka-rysowania-kurs-rysowania-zajeciadladzieci-architektura-asp6-3-1600x1022.png"
+                 height="50"
+                 alt="MDB Logo"
+                 loading="lazy"
+            />
+            Sekretariat</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <!--<li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Main</a>
+                </li>-->
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Login</a></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    body {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/business-and-finance-character/32/woman_admin_business_finance_bukeicon_secretary-512.png');
+        background-position: 10% -25%;
+        background-repeat: no-repeat;
+        background-size: 38%;
+        background: linear-gradient(109.6deg, rgb(245, 239, 249) 30.1%, rgb(207, 211, 236) 100.2%);
+        }
+</style>
+
+</style>
+
+
+<div class="float-container">
+    <div   align="center">
+        <h2>Witaj na stronie naszego sekretariatu!</h2>
+        <p>
+            Zaloguj się, aby uzyskać dostęp do swojego konta klikając przycisk w prawym górnym rogu.
+        </p>
+    </div>
+    <div align="center">
+        <img src="https://cdn4.iconfinder.com/data/icons/business-and-finance-character/32/woman_admin_business_finance_bukeicon_secretary-512.png"/>
+    </div>
+</div>
+<!--Using images in page    -->
+<style>
+    div.static{
+        position: relative;
+        left: 350px;
+        border: 3px;
+        size: 1000%;
+    }
+</style>
+
+<!--<div  class="static">
+    <img th:src="@{'C:\Users\grama\Downloads\output-onlinepngtools.png'}"  widht="400" height="400">
+</div>-->
+
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-5">
+
+            <label style="font-size:30px">Welcome to the home page!</label>
+            <div style="font-size:20px">If you want to login, click <a th:href="@{/main}"><b>here</b></a> or in the
+                upper right corner.
+            </div>
+
+        </div>
+    </div>
+</div>-->
+
+
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
+

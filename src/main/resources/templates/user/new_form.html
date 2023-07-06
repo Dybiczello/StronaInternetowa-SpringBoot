@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Nowy wniosek</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="https://www.szkolarysunku.waw.pl/wp-content/uploads/2020/03/szkola-rysunku-warszawa-nauka-rysowania-kurs-rysowania-zajeciadladzieci-architektura-asp6-3-1600x1022.png"
+           height="50"
+           alt="MDB Logo"
+           loading="lazy"
+      />
+      Sekretariat</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" th:inline="text" style="color:lightskyblue;">Cześć, <b
+                  style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]!</b></a>
+        </li>
+
+        <!--<li class="nav-item">
+            <a class="nav-link" th:href="@{/index}">Home</a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Main
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>-->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">
+            <b>Twoje konto</b>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/index" style="color:#184399">Strona główna</a>
+            <a class="dropdown-item" href="#" style="color:#184399">Moje konto</a>
+            <a class="dropdown-item" href="/main_user" style="color:#184399">Moje wnioski</a>
+            <a class="dropdown-item" href="/new" style="color:#184399">Złóż wniosek</a>
+            <hr class="dropdown-divider">
+            <form method="post" th:action="@{/index}">
+              <center>
+                <button href="/index" type="submit" class="nav-link btn btn-danger" style="black" >Logout</button>
+              </center>
+            </form>
+          </div>
+        </li>
+
+
+        <!--<li>
+            <form method="post" th:action="@{/index}">
+                <button href="/index" type="submit" class="nav-link btn btn-outline-dark" >Logout</button>
+            </form>
+        </li>-->
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<style>
+    body {
+        background: linear-gradient(109.6deg, rgb(245, 239, 249) 30.1%, rgb(207, 211, 236) 100.2%);
+        }
+</style>
+
+<div align="center">
+  <h1>Wypełnij formularz o wysłanie nowego wniosku</h1>
+
+  <br/>
+
+  <form action="#" th:action="@{/save}" th:object="${Wnioski}" method="post">
+
+      <table border = "1" cellpadding = "10">
+        <tr>
+          <td><b>Który to złożony przez Ciebie wniosek?:</b></td>
+          <td><input type="text" th:field="*{Nr_wniosku}"></td>
+        </tr>
+        <tr>
+          <td><b>Czego dotyczy wniosek?:</b></td>
+          <td><input type="text" th:field="*{Nazwa}"></td>
+        </tr>
+        <tr>
+          <td><b>Dzisiejsza data:</b></td>
+          <td><input type="text" th:field="*{Data_zlozenia}"></td>
+        </tr>
+        <tr>
+          <td><b>Czy pilnie potrzebujesz odpowiedzi?:</b></td>
+          <td><input type="text" th:field="*{Czy_pilne}"></td>
+        </tr>
+        <tr>
+          <td><b>Podaj numer swojego sekretariatu:</b></td>
+          <td><input type="text" th:field="*{Nr_sekretatiatu}"></td>
+        </tr>
+        <tr>
+          <td><b>Podaj swój numer klienta:</b></td>
+          <td><input type="text" th:field="*{Nr_klienta}"></td>
+        </tr>
+
+
+        <tr align="center">
+          <td colspan="2">
+            <button type="submit" class="btn btn-success">Zapisz</button>
+          </td>
+        </tr>
+
+      </table>
+
+  </form>
+  <br/>
+  <form method="post" th:action="@{/main_user}">
+    <button href="/main_user" type="submit" class="nav-link btn btn-danger" style="black" >Anuluj wysyłanie wniosku</button>
+  </form>
+
+</div>
+
+
+
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

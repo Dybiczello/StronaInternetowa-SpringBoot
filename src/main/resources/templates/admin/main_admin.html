@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Admin Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="https://www.szkolarysunku.waw.pl/wp-content/uploads/2020/03/szkola-rysunku-warszawa-nauka-rysowania-kurs-rysowania-zajeciadladzieci-architektura-asp6-3-1600x1022.png"
+                 height="50"
+                 alt="MDB Logo"
+                 loading="lazy"
+            />
+            Sekretariat</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Cześć, <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]!</b></a>
+                </li>
+
+                <!--<li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Main
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li>
+                    <form method="post" th:action="@{/index}">
+                        <button href="/index" type="submit" class="nav-link btn btn-outline-dark" >Logout</button>
+                    </form>
+                </li>-->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">
+                        <b>Twoje konto</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/index" style="color:#184399">Strona główna</a>
+                        <a class="dropdown-item" href="/main_admin" style="color:#184399">Wnioski</a>
+                        <a class="dropdown-item" href="/klienci_admin" style="color:#184399">Klienci</a>
+                        <hr class="dropdown-divider">
+                        <form method="post" th:action="@{/index}">
+                            <center>
+                                <button href="/index" type="submit" class="nav-link btn btn-danger" style="black" >Logout</button>
+                            </center>
+                        </form>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<style>
+    body {
+        background: linear-gradient(109.6deg, rgb(245, 239, 249) 30.1%, rgb(207, 211, 236) 100.2%);
+
+        }
+</style>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10 mt-5">
+            <form method="post" th:action="@{/index}">
+                <div class="form-group">
+                    <label style="font-size:30px" th:inline="text">Cześć, <a
+                            style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]!</b></a>
+                        </label>
+                    <div style="font-size:20px">Poniżej znajdują się wszystkie wnioski złożone przez twoich klientów, do nawigacji po witrynie użyj menu w prawym górnym rogu strony.</div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div align="center">
+    <h1>Wnioski</h1>
+
+    <br/><br/>
+
+    <table border="1" cellpadding="10">
+
+        <thead>
+        <tr>
+            <th>Nr_wniosku</th>
+            <th>Nazwa</th>
+            <th>Data_zlozenia</th>
+            <th>Czy_pilne</th>
+            <th>Nr_sekretariatu</th>
+            <th>Nr_klienta</th>
+            <th>Akcje</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="Wnioski : ${listWnioski}">
+            <td th:text="${Wnioski.nr_wniosku}">Nr_wniosku</td>
+            <td th:text="${Wnioski.nazwa}">Nazwa</td>
+            <td th:text="${Wnioski.data_zlozenia}">Data_zlozenia</td>
+            <td th:text="${Wnioski.czy_pilne}">Czy_pilne</td>
+            <td th:text="${Wnioski.nr_sekretatiatu}">Nr_sekretariatu</td>
+            <td th:text="${Wnioski.nr_klienta}">Nr_klienta</td>
+            <td>
+                <a th:href="@{'/edit/' + ${Wnioski.nr_wniosku}}" class="btn btn-warning">Edytuj</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${Wnioski.nr_wniosku}}" class="btn btn-danger">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
